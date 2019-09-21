@@ -9,6 +9,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "start": "npm run develop",
+    "deploy": "gh-pages -d public",
     "script:generate": "graphql-codegen"
   },
   "dependencies": {
@@ -43,6 +44,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/styled-components": "^4.1.19",
     "babel-plugin-styled-components": "^1.10.6",
+    "gh-pages": "^2.1.1",
     "tslint": "^5.20.0",
     "tslint-react": "^4.1.0",
     "typescript": "^3.6.3"
