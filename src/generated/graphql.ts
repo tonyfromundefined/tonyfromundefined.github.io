@@ -608,6 +608,8 @@ export enum FileFieldsEnum {
   ChildMarkdownRemarkId = 'childMarkdownRemark___id',
   ChildMarkdownRemarkFrontmatterTitle = 'childMarkdownRemark___frontmatter___title',
   ChildMarkdownRemarkFrontmatterDate = 'childMarkdownRemark___frontmatter___date',
+  ChildMarkdownRemarkFrontmatterCategory = 'childMarkdownRemark___frontmatter___category',
+  ChildMarkdownRemarkFrontmatterTags = 'childMarkdownRemark___frontmatter___tags',
   ChildMarkdownRemarkExcerpt = 'childMarkdownRemark___excerpt',
   ChildMarkdownRemarkRawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
   ChildMarkdownRemarkFileAbsolutePath = 'childMarkdownRemark___fileAbsolutePath',
@@ -887,6 +889,8 @@ export enum MarkdownRemarkFieldsEnum {
   Id = 'id',
   FrontmatterTitle = 'frontmatter___title',
   FrontmatterDate = 'frontmatter___date',
+  FrontmatterCategory = 'frontmatter___category',
+  FrontmatterTags = 'frontmatter___tags',
   Excerpt = 'excerpt',
   RawMarkdownBody = 'rawMarkdownBody',
   FileAbsolutePath = 'fileAbsolutePath',
@@ -1016,6 +1020,8 @@ export type MarkdownRemarkFrontmatter = {
    __typename?: 'MarkdownRemarkFrontmatter',
   title?: Maybe<Scalars['String']>,
   date?: Maybe<Scalars['Date']>,
+  category?: Maybe<Scalars['String']>,
+  tags?: Maybe<Array<Maybe<Scalars['String']>>>,
 };
 
 
@@ -1029,6 +1035,8 @@ export type MarkdownRemarkFrontmatterDateArgs = {
 export type MarkdownRemarkFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>,
   date?: Maybe<DateQueryOperatorInput>,
+  category?: Maybe<StringQueryOperatorInput>,
+  tags?: Maybe<StringQueryOperatorInput>,
 };
 
 export type MarkdownRemarkGroupConnection = {
@@ -1510,10 +1518,14 @@ export type SitePageConnectionGroupArgs = {
 export type SitePageContext = {
    __typename?: 'SitePageContext',
   slug?: Maybe<Scalars['String']>,
+  tag?: Maybe<Scalars['String']>,
+  category?: Maybe<Scalars['String']>,
 };
 
 export type SitePageContextFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>,
+  tag?: Maybe<StringQueryOperatorInput>,
+  category?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SitePageEdge = {
@@ -1616,6 +1628,8 @@ export enum SitePageFieldsEnum {
   ComponentChunkName = 'componentChunkName',
   IsCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
   ContextSlug = 'context___slug',
+  ContextTag = 'context___tag',
+  ContextCategory = 'context___category',
   PluginCreatorId = 'pluginCreator___id',
   PluginCreatorParentId = 'pluginCreator___parent___id',
   PluginCreatorParentParentId = 'pluginCreator___parent___parent___id',
@@ -1662,6 +1676,7 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsDisplayName = 'pluginCreator___pluginOptions___displayName',
   PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
   PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
+  PluginCreatorPluginOptionsAlias = 'pluginCreator___pluginOptions___alias____',
   PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
   PluginCreatorNodeApIs = 'pluginCreator___nodeAPIs',
   PluginCreatorSsrApIs = 'pluginCreator___ssrAPIs',
@@ -1857,6 +1872,7 @@ export enum SitePluginFieldsEnum {
   PluginOptionsDisplayName = 'pluginOptions___displayName',
   PluginOptionsName = 'pluginOptions___name',
   PluginOptionsPath = 'pluginOptions___path',
+  PluginOptionsAlias = 'pluginOptions___alias____',
   PluginOptionsPathCheck = 'pluginOptions___pathCheck',
   NodeApIs = 'nodeAPIs',
   SsrApIs = 'ssrAPIs',
@@ -1983,7 +1999,17 @@ export type SitePluginPluginOptions = {
   displayName?: Maybe<Scalars['Boolean']>,
   name?: Maybe<Scalars['String']>,
   path?: Maybe<Scalars['String']>,
+  alias?: Maybe<SitePluginPluginOptionsAlias>,
   pathCheck?: Maybe<Scalars['Boolean']>,
+};
+
+export type SitePluginPluginOptionsAlias = {
+   __typename?: 'SitePluginPluginOptionsAlias',
+  _?: Maybe<Scalars['String']>,
+};
+
+export type SitePluginPluginOptionsAliasFilterInput = {
+  _?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SitePluginPluginOptionsFilterInput = {
@@ -1992,6 +2018,7 @@ export type SitePluginPluginOptionsFilterInput = {
   displayName?: Maybe<BooleanQueryOperatorInput>,
   name?: Maybe<StringQueryOperatorInput>,
   path?: Maybe<StringQueryOperatorInput>,
+  alias?: Maybe<SitePluginPluginOptionsAliasFilterInput>,
   pathCheck?: Maybe<BooleanQueryOperatorInput>,
 };
 
@@ -2018,6 +2045,32 @@ export type StringQueryOperatorInput = {
   regex?: Maybe<Scalars['String']>,
   glob?: Maybe<Scalars['String']>,
 };
+export type GetPostsByCategoryQueryVariables = {
+  category?: Maybe<Scalars['String']>
+};
+
+
+export type GetPostsByCategoryQuery = (
+  { __typename?: 'Query' }
+  & { allMarkdownRemark: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & Pick<MarkdownRemarkConnection, 'totalCount'>
+    & { edges: Array<(
+      { __typename?: 'MarkdownRemarkEdge' }
+      & { node: (
+        { __typename?: 'MarkdownRemark' }
+        & { fields: Maybe<(
+          { __typename?: 'MarkdownRemarkFields' }
+          & Pick<MarkdownRemarkFields, 'slug'>
+        )>, frontmatter: Maybe<(
+          { __typename?: 'MarkdownRemarkFrontmatter' }
+          & Pick<MarkdownRemarkFrontmatter, 'title'>
+        )> }
+      ) }
+    )> }
+  ) }
+);
+
 export type GetPostQueryVariables = {
   slug: Scalars['String']
 };
@@ -2033,4 +2086,30 @@ export type GetPostQuery = (
       & Pick<MarkdownRemarkFrontmatter, 'title'>
     )> }
   )> }
+);
+
+export type GetPostsByTagQueryVariables = {
+  tag?: Maybe<Scalars['String']>
+};
+
+
+export type GetPostsByTagQuery = (
+  { __typename?: 'Query' }
+  & { allMarkdownRemark: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & Pick<MarkdownRemarkConnection, 'totalCount'>
+    & { edges: Array<(
+      { __typename?: 'MarkdownRemarkEdge' }
+      & { node: (
+        { __typename?: 'MarkdownRemark' }
+        & { fields: Maybe<(
+          { __typename?: 'MarkdownRemarkFields' }
+          & Pick<MarkdownRemarkFields, 'slug'>
+        )>, frontmatter: Maybe<(
+          { __typename?: 'MarkdownRemarkFrontmatter' }
+          & Pick<MarkdownRemarkFrontmatter, 'title'>
+        )> }
+      ) }
+    )> }
+  ) }
 );

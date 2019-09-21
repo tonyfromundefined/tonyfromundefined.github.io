@@ -12,13 +12,21 @@
     "script:generate": "graphql-codegen"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.24",
+    "@fortawesome/free-brands-svg-icons": "^5.11.1",
+    "@fortawesome/pro-light-svg-icons": "^5.11.1",
+    "@fortawesome/pro-regular-svg-icons": "^5.11.1",
+    "@fortawesome/pro-solid-svg-icons": "^5.11.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "gatsby": "^2.15.20",
+    "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-styled-components": "^3.1.6",
     "gatsby-plugin-typescript": "^2.1.9",
     "gatsby-source-filesystem": "^2.1.26",
     "gatsby-transformer-remark": "^2.6.24",
     "graphql": "^14.5.7",
     "graphql-tag": "^2.10.1",
+    "open-color": "^1.7.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "styled-components": "^4.3.2"

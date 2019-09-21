@@ -1,14 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
+import Top from '~/components/organisms/Top'
+import styled from '~/styled'
 
 const PageIndex: React.FC = () => {
   return (
-    <Container>Hello World!</Container>
+    <Container>
+      <Top />
+    </Container>
   )
 }
 
-const Container = styled.div`
-  color: red;
-`
+const Container = styled.div``
 
 export default PageIndex

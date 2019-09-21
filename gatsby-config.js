@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   plugins: [
     {
@@ -17,11 +19,19 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'src',
-        path: `${__dirname}/src/`,
+        path: path.resolve(__dirname, './src'),
       },
     },
     {
       resolve: 'gatsby-transformer-remark',
+    },
+    {
+      resolve: 'gatsby-plugin-alias-imports',
+      options: {
+        alias: {
+          '~': path.resolve(__dirname, './src'),
+        },
+      }
     },
   ],
 }
