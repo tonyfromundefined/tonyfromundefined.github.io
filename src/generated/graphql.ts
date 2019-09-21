@@ -608,6 +608,7 @@ export enum FileFieldsEnum {
   ChildMarkdownRemarkId = 'childMarkdownRemark___id',
   ChildMarkdownRemarkFrontmatterTitle = 'childMarkdownRemark___frontmatter___title',
   ChildMarkdownRemarkFrontmatterDate = 'childMarkdownRemark___frontmatter___date',
+  ChildMarkdownRemarkFrontmatterAuthor = 'childMarkdownRemark___frontmatter___author',
   ChildMarkdownRemarkFrontmatterCategory = 'childMarkdownRemark___frontmatter___category',
   ChildMarkdownRemarkFrontmatterTags = 'childMarkdownRemark___frontmatter___tags',
   ChildMarkdownRemarkExcerpt = 'childMarkdownRemark___excerpt',
@@ -889,6 +890,7 @@ export enum MarkdownRemarkFieldsEnum {
   Id = 'id',
   FrontmatterTitle = 'frontmatter___title',
   FrontmatterDate = 'frontmatter___date',
+  FrontmatterAuthor = 'frontmatter___author',
   FrontmatterCategory = 'frontmatter___category',
   FrontmatterTags = 'frontmatter___tags',
   Excerpt = 'excerpt',
@@ -1020,6 +1022,7 @@ export type MarkdownRemarkFrontmatter = {
    __typename?: 'MarkdownRemarkFrontmatter',
   title?: Maybe<Scalars['String']>,
   date?: Maybe<Scalars['Date']>,
+  author?: Maybe<Array<Maybe<Scalars['String']>>>,
   category?: Maybe<Scalars['String']>,
   tags?: Maybe<Array<Maybe<Scalars['String']>>>,
 };
@@ -1035,6 +1038,7 @@ export type MarkdownRemarkFrontmatterDateArgs = {
 export type MarkdownRemarkFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>,
   date?: Maybe<DateQueryOperatorInput>,
+  author?: Maybe<StringQueryOperatorInput>,
   category?: Maybe<StringQueryOperatorInput>,
   tags?: Maybe<StringQueryOperatorInput>,
 };
@@ -2045,71 +2049,119 @@ export type StringQueryOperatorInput = {
   regex?: Maybe<Scalars['String']>,
   glob?: Maybe<Scalars['String']>,
 };
-export type GetPostsByCategoryQueryVariables = {
-  category?: Maybe<Scalars['String']>
-};
+export type GetIndexPageQueryVariables = {};
 
 
-export type GetPostsByCategoryQuery = (
+export type GetIndexPageQuery = (
   { __typename?: 'Query' }
-  & { allMarkdownRemark: (
+  & { posts: (
     { __typename?: 'MarkdownRemarkConnection' }
-    & Pick<MarkdownRemarkConnection, 'totalCount'>
-    & { edges: Array<(
-      { __typename?: 'MarkdownRemarkEdge' }
-      & { node: (
-        { __typename?: 'MarkdownRemark' }
-        & { fields: Maybe<(
-          { __typename?: 'MarkdownRemarkFields' }
-          & Pick<MarkdownRemarkFields, 'slug'>
-        )>, frontmatter: Maybe<(
-          { __typename?: 'MarkdownRemarkFrontmatter' }
-          & Pick<MarkdownRemarkFrontmatter, 'title'>
-        )> }
-      ) }
+    & { nodes: Array<(
+      { __typename?: 'MarkdownRemark' }
+      & { frontmatter: Maybe<(
+        { __typename?: 'MarkdownRemarkFrontmatter' }
+        & Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'author'>
+      )>, fields: Maybe<(
+        { __typename?: 'MarkdownRemarkFields' }
+        & Pick<MarkdownRemarkFields, 'slug'>
+      )> }
+    )> }
+  ), categories: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & { group: Array<(
+      { __typename?: 'MarkdownRemarkGroupConnection' }
+      & { name: MarkdownRemarkGroupConnection['fieldValue'], count: MarkdownRemarkGroupConnection['totalCount'] }
+    )> }
+  ), tags: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & { group: Array<(
+      { __typename?: 'MarkdownRemarkGroupConnection' }
+      & { name: MarkdownRemarkGroupConnection['fieldValue'] }
     )> }
   ) }
 );
 
-export type GetPostQueryVariables = {
+export type GetCategoryTemplateQueryVariables = {
+  category?: Maybe<Scalars['String']>
+};
+
+
+export type GetCategoryTemplateQuery = (
+  { __typename?: 'Query' }
+  & { posts: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & { nodes: Array<(
+      { __typename?: 'MarkdownRemark' }
+      & { frontmatter: Maybe<(
+        { __typename?: 'MarkdownRemarkFrontmatter' }
+        & Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'author'>
+      )>, fields: Maybe<(
+        { __typename?: 'MarkdownRemarkFields' }
+        & Pick<MarkdownRemarkFields, 'slug'>
+      )> }
+    )> }
+  ), categories: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & { group: Array<(
+      { __typename?: 'MarkdownRemarkGroupConnection' }
+      & { name: MarkdownRemarkGroupConnection['fieldValue'], count: MarkdownRemarkGroupConnection['totalCount'] }
+    )> }
+  ), tags: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & { group: Array<(
+      { __typename?: 'MarkdownRemarkGroupConnection' }
+      & { name: MarkdownRemarkGroupConnection['fieldValue'] }
+    )> }
+  ) }
+);
+
+export type GetPostTemplateQueryVariables = {
   slug: Scalars['String']
 };
 
 
-export type GetPostQuery = (
+export type GetPostTemplateQuery = (
   { __typename?: 'Query' }
-  & { markdownRemark: Maybe<(
+  & { post: Maybe<(
     { __typename?: 'MarkdownRemark' }
     & Pick<MarkdownRemark, 'html'>
     & { frontmatter: Maybe<(
       { __typename?: 'MarkdownRemarkFrontmatter' }
-      & Pick<MarkdownRemarkFrontmatter, 'title'>
+      & Pick<MarkdownRemarkFrontmatter, 'title' | 'author'>
     )> }
   )> }
 );
 
-export type GetPostsByTagQueryVariables = {
+export type GetTagTemplateQueryVariables = {
   tag?: Maybe<Scalars['String']>
 };
 
 
-export type GetPostsByTagQuery = (
+export type GetTagTemplateQuery = (
   { __typename?: 'Query' }
-  & { allMarkdownRemark: (
+  & { posts: (
     { __typename?: 'MarkdownRemarkConnection' }
-    & Pick<MarkdownRemarkConnection, 'totalCount'>
-    & { edges: Array<(
-      { __typename?: 'MarkdownRemarkEdge' }
-      & { node: (
-        { __typename?: 'MarkdownRemark' }
-        & { fields: Maybe<(
-          { __typename?: 'MarkdownRemarkFields' }
-          & Pick<MarkdownRemarkFields, 'slug'>
-        )>, frontmatter: Maybe<(
-          { __typename?: 'MarkdownRemarkFrontmatter' }
-          & Pick<MarkdownRemarkFrontmatter, 'title'>
-        )> }
-      ) }
+    & { nodes: Array<(
+      { __typename?: 'MarkdownRemark' }
+      & { frontmatter: Maybe<(
+        { __typename?: 'MarkdownRemarkFrontmatter' }
+        & Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'author'>
+      )>, fields: Maybe<(
+        { __typename?: 'MarkdownRemarkFields' }
+        & Pick<MarkdownRemarkFields, 'slug'>
+      )> }
+    )> }
+  ), categories: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & { group: Array<(
+      { __typename?: 'MarkdownRemarkGroupConnection' }
+      & { name: MarkdownRemarkGroupConnection['fieldValue'], count: MarkdownRemarkGroupConnection['totalCount'] }
+    )> }
+  ), tags: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & { group: Array<(
+      { __typename?: 'MarkdownRemarkGroupConnection' }
+      & { name: MarkdownRemarkGroupConnection['fieldValue'] }
     )> }
   ) }
 );

@@ -26,7 +26,9 @@
     "gatsby-transformer-remark": "^2.6.24",
     "graphql": "^14.5.7",
     "graphql-tag": "^2.10.1",
+    "moment": "^2.24.0",
     "open-color": "^1.7.0",
+    "polished": "^3.4.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "styled-components": "^4.3.2"

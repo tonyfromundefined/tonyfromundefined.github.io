@@ -42,6 +42,7 @@ const Top: React.FC = () => {
 const Container = styled.div`
   display: flex;
   height: 7.5rem;
+  margin-bottom: 1.75rem;
 `
 
 const Logo = styled.div`
@@ -69,7 +70,7 @@ const Caption = styled.div`
   font-family: 'IBM Plex Sans';
   font-size: .875rem;
   font-weight: 400;
-  line-height: 1.33;
+  line-height: 1.4;
 `
 
 const Space = styled.div`

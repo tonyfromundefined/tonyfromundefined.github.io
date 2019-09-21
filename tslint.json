@@ -8,7 +8,7 @@
     "exclude": [
       "node_modules/**/*.ts",
       "dist/**/*.js",
-      "src/generated/graphql.tsx"
+      "src/generated/graphql.ts"
     ]
   },
   "rules": {
