@@ -2018,12 +2018,12 @@ export type StringQueryOperatorInput = {
   regex?: Maybe<Scalars['String']>,
   glob?: Maybe<Scalars['String']>,
 };
-export type GetArticleQueryVariables = {
+export type GetPostQueryVariables = {
   slug: Scalars['String']
 };
 
 
-export type GetArticleQuery = (
+export type GetPostQuery = (
   { __typename?: 'Query' }
   & { markdownRemark: Maybe<(
     { __typename?: 'MarkdownRemark' }

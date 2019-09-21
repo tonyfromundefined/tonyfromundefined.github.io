@@ -1,11 +1,11 @@
 import { graphql } from 'gatsby'
 import React from 'react'
-import { GetArticleQuery } from '../generated/graphql'
+import { GetPostQuery } from '../generated/graphql'
 
-interface ITemplateArticleProps {
-  data: GetArticleQuery
+interface ITemplatePostProps {
+  data: GetPostQuery
 }
-const TemplateArticle: React.FC<ITemplateArticleProps> = ({ data }) => {
+const TemplatePost: React.FC<ITemplatePostProps> = ({ data }) => {
   const post = data.markdownRemark
 
   return (
@@ -19,7 +19,7 @@ const TemplateArticle: React.FC<ITemplateArticleProps> = ({ data }) => {
 }
 
 export const query = graphql`
-  query getArticle($slug: String!) {
+  query getPost($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
@@ -29,4 +29,4 @@ export const query = graphql`
   }
 `
 
-export default TemplateArticle
+export default TemplatePost

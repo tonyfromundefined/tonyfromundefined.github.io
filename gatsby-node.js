@@ -42,19 +42,19 @@ exports.createPages = async ({
     }
   `)
 
-  const articles = result
+  const posts = result
     .data
     .allMarkdownRemark
     .edges
     .map(({ node }) => node)
   
-  articles
-    .map((article) => {
+  posts
+    .map((post) => {
       createPage({
-        path: article.fields.slug,
-        component: path.resolve('./src/templates/article.tsx'),
+        path: post.fields.slug,
+        component: path.resolve('./src/templates/post.tsx'),
         context: {
-          slug: article.fields.slug,
+          slug: post.fields.slug,
         },
       })
     })
