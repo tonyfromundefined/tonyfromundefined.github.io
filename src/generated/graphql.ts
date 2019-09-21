@@ -2056,6 +2056,7 @@ export type GetIndexPageQuery = (
   { __typename?: 'Query' }
   & { posts: (
     { __typename?: 'MarkdownRemarkConnection' }
+    & Pick<MarkdownRemarkConnection, 'totalCount'>
     & { nodes: Array<(
       { __typename?: 'MarkdownRemark' }
       & { frontmatter: Maybe<(
@@ -2088,7 +2089,10 @@ export type GetCategoryTemplateQueryVariables = {
 
 export type GetCategoryTemplateQuery = (
   { __typename?: 'Query' }
-  & { posts: (
+  & { allPosts: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & Pick<MarkdownRemarkConnection, 'totalCount'>
+  ), posts: (
     { __typename?: 'MarkdownRemarkConnection' }
     & { nodes: Array<(
       { __typename?: 'MarkdownRemark' }
@@ -2139,7 +2143,10 @@ export type GetTagTemplateQueryVariables = {
 
 export type GetTagTemplateQuery = (
   { __typename?: 'Query' }
-  & { posts: (
+  & { allPosts: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & Pick<MarkdownRemarkConnection, 'totalCount'>
+  ), posts: (
     { __typename?: 'MarkdownRemarkConnection' }
     & { nodes: Array<(
       { __typename?: 'MarkdownRemark' }

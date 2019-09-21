@@ -5,6 +5,7 @@ import React from 'react'
 import styled from '~/styled'
 
 export interface ISidebarProps {
+  totalCount: number
   categories: Array<{
     name: string,
     count: number,
@@ -13,7 +14,7 @@ export interface ISidebarProps {
     name: string,
   }>
 }
-const Sidebar: React.FC<ISidebarProps> = ({ categories, tags }) => {
+const Sidebar: React.FC<ISidebarProps> = ({ totalCount: total, categories, tags }) => {
   return (
     <Container>
       <Box>
@@ -22,6 +23,13 @@ const Sidebar: React.FC<ISidebarProps> = ({ categories, tags }) => {
           CATEGORIES
         </Title>
         <Categories>
+          <CategoryLink
+            to='/'
+            activeClassName='active'
+          >
+            All
+            <CategoryLinkTag>{total}</CategoryLinkTag>
+          </CategoryLink>
           {categories.map((category) => (
             <CategoryLink
               key={category.name}

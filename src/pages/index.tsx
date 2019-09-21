@@ -13,6 +13,7 @@ const PageIndex: React.FC<IPageIndexProps> = ({ data }) => {
     <Layout>
       <SectionWithSidebar
         sidebar={{
+          totalCount: data.posts.totalCount,
           categories: data.categories.group
             .filter((group) => (
               typeof group.name !== 'undefined' &&
@@ -66,6 +67,7 @@ export const query = graphql`
           slug
         }
       }
+      totalCount
     }
     categories: allMarkdownRemark(limit: 5000) {
       group(field: frontmatter___category) {

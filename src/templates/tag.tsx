@@ -13,6 +13,7 @@ const TemplateTag: React.FC<ITemplateTagProps> = ({ data }) => {
     <Layout>
       <SectionWithSidebar
         sidebar={{
+          totalCount: data.allPosts.totalCount,
           categories: data.categories.group
             .filter((group) => (
               typeof group.name !== 'undefined' &&
@@ -55,6 +56,9 @@ const TemplateTag: React.FC<ITemplateTagProps> = ({ data }) => {
 
 export const query = graphql`
   query getTagTemplate($tag: String) {
+    allPosts: allMarkdownRemark {
+      totalCount
+    }
     posts: allMarkdownRemark(
       limit: 5000,
       sort: { fields: [frontmatter___date], order: DESC },
