@@ -1,13 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'gatsby'
+import { rgba } from 'polished'
 import React from 'react'
 import Section from '~/components/atoms/Section'
-import styled from '~/styled'
+import styled, { media } from '~/styled'
 
 const Top: React.FC = () => {
   return (
     <Section>
       <Container>
-        <Logo>
+        <Logo to='/'>
           Undefined<br />
           Coding
         </Logo>
@@ -41,11 +43,15 @@ const Top: React.FC = () => {
 
 const Container = styled.div`
   display: flex;
-  height: 7.5rem;
+  min-height: 7.5rem;
   margin-bottom: 1.75rem;
+
+  ${media.lessThan('medium')`
+    display: block;
+  `}
 `
 
-const Logo = styled.div`
+const Logo = styled(Link)`
   display: flex;
   align-items: flex-end;
   width: 13.75rem;
@@ -55,6 +61,21 @@ const Logo = styled.div`
   font-weight: 600;
   font-style: italic;
   padding: .5rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+  margin-right: 1px;
+
+  &:hover {
+    background-color: #F06595;
+    box-shadow: 0 0 0 1px #000, 0 0 1rem 0 ${rgba('#F06595', 0.4)};
+  }
+
+  ${media.lessThan('medium')`
+    width: 100%;
+    margin-right: 0;
+    height: 8rem;
+  `}
 `
 
 const Extends = styled.div`
@@ -62,8 +83,15 @@ const Extends = styled.div`
   align-items: flex-end;
   box-shadow: 0 0 0 1px #000;
   flex: 1;
-  margin-left: 1px;
   padding: .5rem;
+  margin-right: 1px;
+
+  ${media.lessThan('medium')`
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-right: 0;
+    height: 5rem;
+  `}
 `
 
 const Caption = styled.div`
@@ -91,8 +119,12 @@ const Button = styled.a`
 const Subscribe = styled.div`
   display: flex;
   height: 2.5rem;
-  margin-left: 1px;
   width: 16.25rem;
+
+  ${media.lessThan('medium')`
+    width: 100%;
+    box-shadow: 0 1px 0 0 #000;
+  `}
 `
 
 const SubscribeEmailInput = styled.input`
@@ -108,6 +140,10 @@ const SubscribeEmailInput = styled.input`
   &::placeholder {
     color: #ADB5BD;
   }
+
+  ${media.lessThan('medium')`
+    background-color: rgba(0, 0, 0, 0);
+  `}
 `
 
 const SubscribeSubmit = styled.div`

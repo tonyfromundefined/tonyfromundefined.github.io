@@ -3,7 +3,7 @@ import React from 'react'
 import Section from '~/components/atoms/Section'
 import Layout from '~/components/Layout'
 import { authors, IAuthor } from '~/constants'
-import styled from '~/styled'
+import styled, { media } from '~/styled'
 import { GetPostTemplateQuery } from '../generated/graphql'
 
 interface ITemplatePostProps {
@@ -65,7 +65,7 @@ const PostContainer = styled.div`
 const FloatingCaption = styled.div`
   font-size: .875rem;
   position: absolute;
-  top: .25rem;
+  top: 0;
   left: 0;
 `
 
@@ -75,17 +75,31 @@ const Title = styled.div`
   position: relative;
   padding: 0 5.625rem;
   margin-bottom: 3rem;
+
+  ${media.lessThan('medium')`
+    padding: 2rem 0 0;
+    margin: 0 1rem 3rem;
+  `}
 `
 
 const Authors = styled.div`
   position: relative;
   padding: 0 8.75rem;
   margin-bottom: 2rem;
+
+  ${media.lessThan('medium')`
+    padding: 2.5rem 0 0;
+    margin: 0 1rem 3rem;
+  `}
 `
 
 const ContentContainer = styled.div`
   padding: 0 8.75rem;
   line-height: 1.5625;
+
+  ${media.lessThan('medium')`
+    padding: 0 1rem;
+  `}
 `
 
 const Author: React.FC<IAuthor> = (props) => {

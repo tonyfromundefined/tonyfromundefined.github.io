@@ -101,8 +101,8 @@ const CategoryLink = styled(Link)<ICategoryLinkProps>`
   border-radius: 1px;
 
   &:hover {
-    background-color: #69DB7C;
-    box-shadow: 0 0 .5rem 0 ${rgba('#69DB7C', 0.4)};
+    background-color: #4DABF7;
+    box-shadow: 0 0 .5rem 0 ${rgba('#4DABF7', 0.4)};
     color: #000;
   }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from '~/styled'
+import styled, { media } from '~/styled'
 
 const Section: React.FC = ({ children }) => {
   return (
@@ -19,6 +19,11 @@ const Flex = styled.div`
 const Center = styled.div`
   width: 100%;
   max-width: 50rem;
+  margin: 0 1rem;
+
+  ${media.lessThan('medium')`
+    margin: 0;
+  `}
 `
 
 export default Section
