@@ -1,15 +1,5 @@
-const { library } = require('@fortawesome/fontawesome-svg-core')
-const { fab } = require('@fortawesome/free-brands-svg-icons')
-const { fal } = require('@fortawesome/pro-light-svg-icons')
-const { far } = require('@fortawesome/pro-regular-svg-icons')
-const { fas } = require('@fortawesome/pro-solid-svg-icons')
 const { createFilePath } = require('gatsby-source-filesystem')
 const path = require('path')
-
-library.add(fab)
-library.add(fal)
-library.add(far)
-library.add(fas)
 
 exports.onCreateNode = ({
   actions: { createNodeField },

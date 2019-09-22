@@ -101,8 +101,8 @@ const CategoryLink = styled(Link)<ICategoryLinkProps>`
   border-radius: 1px;
 
   &:hover {
-    background-color: #4DABF7;
-    box-shadow: 0 0 .5rem 0 ${rgba('#4DABF7', 0.4)};
+    background-color: #9775FA;
+    box-shadow: 0 0 .5rem 0 ${rgba('#9775FA', 0.4)};
     color: #000;
   }
 
@@ -138,14 +138,14 @@ const TagLink = styled(Link)`
   text-decoration: none;
   color: #343A40;
   font-size: .8125rem;
-  background-color: #E9ECEF;
+  background-color: rgba(0, 10, 20, .05);
   margin-right: .375rem;
   margin-bottom: .375rem;
   padding: .25rem .375rem;
   border-radius: 1px;
 
   &:hover {
-    background-color: #CED4DA;
+    background-color: rgba(0, 10, 20, .2);
     box-shadow: 0 0 .5rem 0 ${rgba('#CED4DA', 0.4)};
     color: #000;
   }

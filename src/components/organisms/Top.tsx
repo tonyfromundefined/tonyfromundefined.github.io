@@ -33,7 +33,7 @@ const Top: React.FC = () => {
             placeholder='이메일로 새소식 받아보기'
           />
           <SubscribeSubmit>
-            <FontAwesomeIcon icon={['fal', 'arrow-right']} />
+            <FontAwesomeIcon icon={['fas', 'arrow-right']} />
           </SubscribeSubmit>
         </Subscribe>
       </Container>
@@ -67,8 +67,8 @@ const Logo = styled(Link)`
   margin-right: 1px;
 
   &:hover {
-    background-color: #F06595;
-    box-shadow: 0 0 0 1px #000, 0 0 1rem 0 ${rgba('#F06595', 0.4)};
+    background-color: #9775FA;
+    box-shadow: 0 0 0 1px #000, 0 0 1rem 0 ${rgba('#9775FA', 0.4)};
   }
 
   ${media.lessThan('medium')`
@@ -131,14 +131,14 @@ const SubscribeEmailInput = styled.input`
   appearance: none;
   border: 0;
   outline: none;
-  background-color: #F8F9FA;
+  background-color: rgba(255, 255, 255, .5);
   padding: .75rem;
   font-size: .875rem;
   flex: 1;
   font-family: 'IBM Plex Sans', sans-serif;
 
   &::placeholder {
-    color: #ADB5BD;
+    color: rgba(0, 10, 20, .8);
   }
 
   ${media.lessThan('medium')`
@@ -151,7 +151,7 @@ const SubscribeSubmit = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #E9ECEF;
+  background-color: #fff;
   cursor: pointer;
 `
 
